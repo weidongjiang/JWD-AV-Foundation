@@ -79,7 +79,7 @@ static const NSString *PlayerItemStatusContext;
 
     // Listing 4.6
 
-    NSArray *keys = @[@"tracks",@"duration",@"commonMetadata"];
+    NSArray *keys = @[@"tracks",@"duration",@"commonMetadata",@"availableMediaCharacteristicsWithMediaSelectionOptions"];
     self.palyerItem = [AVPlayerItem playerItemWithAsset:self.asset automaticallyLoadedAssetKeys:keys];
 
     // 添加观察者
@@ -96,7 +96,6 @@ static const NSString *PlayerItemStatusContext;
 
     self.transport.delegate = self;
 
-    
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath
@@ -131,6 +130,9 @@ static const NSString *PlayerItemStatusContext;
 
                 // 设置缩略图
                 [self generateThumbnails];
+
+                // 添加字幕
+                [self loadMediaOptions];
 
             }else {
                 [UIAlertView showAlertWithTitle:@"Error" message:@" Failed to load video"];
@@ -292,16 +294,41 @@ static const NSString *PlayerItemStatusContext;
 }
 
 
+
 - (void)loadMediaOptions {
 
     // Listing 4.16
+    NSString *mc = AVMediaCharacteristicLegible;
+    AVMediaSelectionGroup *group = [self.asset mediaSelectionGroupForMediaCharacteristic:mc];
+    if (group) {
+        NSMutableArray *subtitles = [[NSMutableArray alloc] init];
+        for (AVMediaSelectionOption *option in group.options) {
+            [subtitles addObject:option.displayName];
+        }
+        [self.transport setSubtitles:subtitles];
+    }else {
+        [self.transport setSubtitles:nil];
+    }
     
 }
 
 - (void)subtitleSelected:(NSString *)subtitle {
 
     // Listing 4.17
-    
+    NSString *mc = AVMediaCharacteristicLegible;
+    AVMediaSelectionGroup *group = [self.asset mediaSelectionGroupForMediaCharacteristic:mc];
+
+    BOOL select = NO;
+    for (AVMediaSelectionOption *option in group.options) {
+        if ([option.displayName isEqualToString:subtitle]) {
+            [self.palyerItem selectMediaOption:option inMediaSelectionGroup:group];
+            select = YES;
+        }
+    }
+
+    if (!select) {
+        [self.palyerItem selectMediaOption:nil inMediaSelectionGroup:group];
+    }
 }
 
 

@@ -10,12 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "VideoPlayer/THVideoPlayer/Controllers/THPlayerController.m"
-            timestampString = "564285413.902158"
+            timestampString = "564287469.319447"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "286"
-            endingLineNumber = "286"
-            landmarkName = "-generateThumbnails"
+            startingLineNumber = "317"
+            endingLineNumber = "317"
+            landmarkName = "-subtitleSelected:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -25,13 +25,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "VideoPlayer/THVideoPlayer/Views/THFilmstripView.m"
-            timestampString = "564285413.90265"
+            filePath = "VideoPlayer/THVideoPlayer/Views/THOverlayView.m"
+            timestampString = "564287469.319981"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "59"
-            endingLineNumber = "59"
-            landmarkName = "-buildScrubber:"
+            startingLineNumber = "121"
+            endingLineNumber = "121"
+            landmarkName = "-setSubtitles:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
