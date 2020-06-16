@@ -14,7 +14,10 @@
 @property (nonatomic, strong) UILabel *playTitleLabel;
 @property (nonatomic, strong) UISlider *slider;
 @property (nonatomic, assign) NSTimeInterval duration;
-
+@property (nonatomic, strong) UIView *topView;
+@property (nonatomic, strong) UIView *bottomView;
+@property (nonatomic, assign) BOOL animateHidden;
+@property (nonatomic, strong) UIButton *playBtn;
 @end
 
 
@@ -23,8 +26,30 @@
     self = [super init];
     if (self) {
         [self setupView];
+        [self addGestureRecognize];
     }
     return self;
+}
+
+- (void)addGestureRecognize {
+    self.animateHidden = YES;
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(overlayViewTap:)];
+    [self addGestureRecognizer:tap];
+    
+    UITapGestureRecognizer *towtap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(overlayViewTowTap:)];
+    towtap.numberOfTapsRequired = 2;
+    [self addGestureRecognizer:towtap];
+    
+}
+
+- (void)overlayViewTap:(UITapGestureRecognizer *)tap {
+    NSLog(@"JWDOverlayView----overlayViewTap");
+    [self animateWith:self.animateHidden];
+}
+
+- (void)overlayViewTowTap:(UITapGestureRecognizer *)tap {
+    NSLog(@"JWDOverlayView----overlayViewTowTap");
+
 }
 
 
@@ -33,6 +58,7 @@
     // 布局
 
     UIView *topView = [[UIView alloc] init];
+    self.topView = topView;
     topView.backgroundColor = [UIColor grayColor];
     [self addSubview:topView];
     [topView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -59,6 +85,7 @@
     }];
 
     UIView *bottomView = [[UIView alloc] init];
+    self.bottomView = bottomView;
     bottomView.backgroundColor = [UIColor grayColor];
     [self addSubview:bottomView];
     [bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -68,6 +95,7 @@
 
     
     UIButton *playBtn = [[UIButton alloc] init];
+    self.playBtn = playBtn;
     [playBtn setTitle:@"pause" forState:UIControlStateNormal];
     [playBtn addTarget:self action:@selector(playBtnDid:) forControlEvents:UIControlEventTouchUpInside];
     [bottomView addSubview:playBtn];
@@ -112,12 +140,9 @@
 }
 
 - (void)closeBtn {
-  
-    
     if (self.delegate && [self.delegate respondsToSelector:@selector(stop)]) {
         [self.delegate stop];
     }
-    
 }
 
 - (void)sliderTouchDown:(UISlider *)slider {
@@ -153,9 +178,43 @@
 
 - (void)playbackComplete {
     
+    [self.playBtn setTitle:@"play" forState:UIControlStateNormal];
+    [self.playBtn setSelected:YES];
+    
 }
 
 - (void)setSubtitles:(NSArray *)subtitles {
+    
+}
+
+
+- (void)animateWith:(BOOL)isHidden {
+    
+    
+    [UIView animateWithDuration:0.35 animations:^{
+        if (isHidden) {
+            self.animateHidden = NO;
+            [self.topView mas_updateConstraints:^(MASConstraintMaker *make) {
+                make.top.equalTo(self.topView.superview).offset(-50);
+            }];
+            [self.bottomView mas_updateConstraints:^(MASConstraintMaker *make) {
+                make.bottom.equalTo(self.topView.superview).offset(50);
+            }];
+        }else {
+            self.animateHidden = YES;
+            [self.topView mas_updateConstraints:^(MASConstraintMaker *make) {
+                make.top.equalTo(self.topView.superview).offset(0);
+            }];
+            [self.bottomView mas_updateConstraints:^(MASConstraintMaker *make) {
+                make.bottom.equalTo(self.topView.superview).offset(0);
+            }];
+        }
+        
+        [self layoutIfNeeded];
+        
+    } completion:^(BOOL finished) {
+        
+    }];
     
 }
 

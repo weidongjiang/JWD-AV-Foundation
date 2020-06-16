@@ -16,5 +16,53 @@
             stopOnStyle = "0">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9980AB3C-14C3-4B58-A76A-B90EA55ED7D6"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "JWDVideoPlayer/play/JWDOverlayView.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "194"
+            endingLineNumber = "194"
+            landmarkName = "-animateWith:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "9980AB3C-14C3-4B58-A76A-B90EA55ED7D6 - 57dfa4124438743e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[JWDOverlayView animateWith:]"
+                  moduleName = "JWDVideoPlayer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/weidong/Desktop/study/JWD-AV-Foundation/AV-Foundation/04-VideoPlayer/JWDVideoPlayer/JWDVideoPlayer/play/JWDOverlayView.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "189"
+                  endingLineNumber = "189"
+                  offsetFromSymbolStart = "56">
+               </Location>
+               <Location
+                  uuid = "9980AB3C-14C3-4B58-A76A-B90EA55ED7D6 - b74188e9283394c5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__30-[JWDOverlayView animateWith:]_block_invoke"
+                  moduleName = "JWDVideoPlayer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/weidong/Desktop/study/JWD-AV-Foundation/AV-Foundation/04-VideoPlayer/JWDVideoPlayer/JWDVideoPlayer/play/JWDOverlayView.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "189"
+                  endingLineNumber = "189"
+                  offsetFromSymbolStart = "20">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>
