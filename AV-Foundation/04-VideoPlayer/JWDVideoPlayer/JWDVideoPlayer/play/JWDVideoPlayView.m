@@ -41,6 +41,7 @@
 
     JWDOverlayView *overlayView = [[JWDOverlayView alloc] init];
     self.overlayView = overlayView;
+    self.overlayView.frame = self.bounds;
     [self addSubview:overlayView];
     
 //    overlayView.backgroundColor = [UIColor blackColor];

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2FD9E764177FC9A76122DFA2 /* libPods-JWDVideoPlayer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EFB332023E23393422AE3A46 /* libPods-JWDVideoPlayer.a */; };
+		4C45C8592498A6DF00F9AF23 /* Res in Resources */ = {isa = PBXBuildFile; fileRef = 4C45C8582498A6DF00F9AF23 /* Res */; };
 		4CC340FA2498737700CA0CA9 /* JWDVideoPlayController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CC340F92498737700CA0CA9 /* JWDVideoPlayController.m */; };
 		4CC340FE2498938800CA0CA9 /* JWDOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CC340FD2498938800CA0CA9 /* JWDOverlayView.m */; };
 		4CC3410124989BDE00CA0CA9 /* AVAsset+JWDAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CC3410024989BDE00CA0CA9 /* AVAsset+JWDAdditions.m */; };
@@ -48,6 +49,7 @@
 		223730AA01310111E329A8D4 /* Pods-JWDVideoPlayerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JWDVideoPlayerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JWDVideoPlayerTests/Pods-JWDVideoPlayerTests.debug.xcconfig"; sourceTree = "<group>"; };
 		39509200061DB2A7150AD65E /* libPods-JWDVideoPlayerUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JWDVideoPlayerUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A18258CD59A9414E1E398B3 /* Pods-JWDVideoPlayerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JWDVideoPlayerUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-JWDVideoPlayerUITests/Pods-JWDVideoPlayerUITests.release.xcconfig"; sourceTree = "<group>"; };
+		4C45C8582498A6DF00F9AF23 /* Res */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Res; sourceTree = "<group>"; };
 		4CC340F82498737700CA0CA9 /* JWDVideoPlayController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JWDVideoPlayController.h; sourceTree = "<group>"; };
 		4CC340F92498737700CA0CA9 /* JWDVideoPlayController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JWDVideoPlayController.m; sourceTree = "<group>"; };
 		4CC340FB2498792F00CA0CA9 /* JWDTransport.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JWDTransport.h; sourceTree = "<group>"; };
@@ -160,6 +162,7 @@
 		CE2A04CA2193C98A003C15DD /* JWDVideoPlayer */ = {
 			isa = PBXGroup;
 			children = (
+				4C45C8582498A6DF00F9AF23 /* Res */,
 				CE2A04FD2193CAB4003C15DD /* play */,
 				CE2A04CB2193C98A003C15DD /* AppDelegate.h */,
 				CE2A04CC2193C98A003C15DD /* AppDelegate.m */,
@@ -319,6 +322,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE2A04D82193C98D003C15DD /* LaunchScreen.storyboard in Resources */,
+				4C45C8592498A6DF00F9AF23 /* Res in Resources */,
 				CE2A04D52193C98D003C15DD /* Assets.xcassets in Resources */,
 				CE2A04D32193C98A003C15DD /* Main.storyboard in Resources */,
 			);
@@ -583,6 +587,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = 3ZPP94SLYH;
 				INFOPLIST_FILE = JWDVideoPlayer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -602,6 +607,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = 3ZPP94SLYH;
 				INFOPLIST_FILE = JWDVideoPlayer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;

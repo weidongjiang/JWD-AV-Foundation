@@ -15,7 +15,7 @@
 @interface JWDVideoHomeViewController ()
 
 @property (nonatomic, strong) JWDVideoPlayView        *playView; ///< <#value#>
-
+@property (nonatomic, strong) JWDVideoPlayController *playController;
 @end
 
 @implementation JWDVideoHomeViewController
@@ -43,15 +43,12 @@
 
 - (void)playLocalButton {
 
-//    NSURL *localURL = [[NSBundle mainBundle] URLForResource:@"hubblecast" withExtension:@"m4v"];
-    NSString *localURL = [[NSBundle mainBundle] pathsForResourcesOfType:@"m4v" inDirectory:@"hubblecast"];
+    NSString *localURL = [[NSBundle mainBundle] pathForResource:@"hubblecast" ofType:@"m4v" inDirectory:@"Res"];
     
-    JWDVideoPlayController *playController = [[JWDVideoPlayController alloc] initWithUrl:localURL];
-    
-    UIView *playView = playController.view;
+    self.playController = [[JWDVideoPlayController alloc] initWithUrl:[NSURL fileURLWithPath:localURL]];
 
-    [self.view addSubview:playView];
-    [playView mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.view addSubview:self.playController.view];
+    [self.playController.view mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.view);
     }];
 

@@ -35,23 +35,22 @@ static const NSString *PlayerItemStatusContext;
 - (instancetype)initWithUrl:(NSURL *)assetURL {
     self = [super init];
     if (self) {
-        _asset = [AVAsset assetWithURL:assetURL];
+        self.asset = [AVAsset assetWithURL:assetURL];
         [self prepareToPlay];
     }
     return self;
 }
 
 - (void)prepareToPlay {
-    NSArray *keys = @[
-        @"tracks",
-        @"duration",
-        @"commonMetadata",
-        @"availableMediaCharacteristicsWithMediaSelectionOptions"
-    ];
+    NSArray *keys = @[@"tracks",@"duration",@"commonMetadata",@"availableMediaCharacteristicsWithMediaSelectionOptions"];
     
-    self.playerItem = [AVPlayerItem playerItemWithAsset:self.asset automaticallyLoadedAssetKeys:keys];
+    self.playerItem = [AVPlayerItem playerItemWithAsset:self.asset
+                           automaticallyLoadedAssetKeys:keys];
     
-    [self.playerItem addObserver:self forKeyPath:STATUS_KEYPATH options:0 context:&PlayerItemStatusContext];
+    [self.playerItem addObserver:self
+                      forKeyPath:STATUS_KEYPATH
+                         options:0
+                         context:&PlayerItemStatusContext];
     
     self.player = [AVPlayer playerWithPlayerItem:self.playerItem];
     
@@ -80,8 +79,8 @@ static const NSString *PlayerItemStatusContext;
                 
                 [self.player play];
                 
-                [self loadMediaOptions];
-                [self generateThumbnails];
+//                [self loadMediaOptions];
+//                [self generateThumbnails];
                 
             }else {
                 NSLog(@"Failed to load video");
@@ -124,7 +123,9 @@ static const NSString *PlayerItemStatusContext;
         [weakSelf.transport setCurrentTime:currentTime duration:duration];
     };
     
-    self.timeObserver = [self.player addPeriodicTimeObserverForInterval:interval queue:queue usingBlock:callBack];
+    self.timeObserver = [self.player addPeriodicTimeObserverForInterval:interval
+                                                                  queue:queue
+                                                             usingBlock:callBack];
     
 }
 
@@ -140,7 +141,8 @@ static const NSString *PlayerItemStatusContext;
     
     self.itemEndObserver = [[NSNotificationCenter defaultCenter] addObserverForName:AVPlayerItemDidPlayToEndTimeNotification
                                                                              object:self.playerItem
-                                                                              queue:[NSOperationQueue mainQueue] usingBlock:callBack];
+                                                                              queue:[NSOperationQueue mainQueue]
+                                                                         usingBlock:callBack];
     
     
 }
