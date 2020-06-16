@@ -19,16 +19,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "16B067B5-325C-4B0B-BF8E-BCC3496715AE"
+            uuid = "20455217-E802-4F2D-9A14-58D86A16D1EA"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "JWDVideoPlayer/play/JWDVideoPlayController.m"
+            filePath = "JWDVideoPlayer/play/JWDOverlayView.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "67"
-            endingLineNumber = "67"
-            landmarkName = "-observeValueForKeyPath:ofObject:change:context:"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
+            landmarkName = "-setScrubbingTime:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2FD9E764177FC9A76122DFA2 /* libPods-JWDVideoPlayer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EFB332023E23393422AE3A46 /* libPods-JWDVideoPlayer.a */; };
 		4C45C8592498A6DF00F9AF23 /* Res in Resources */ = {isa = PBXBuildFile; fileRef = 4C45C8582498A6DF00F9AF23 /* Res */; };
+		4C45C85D2498BBC300F9AF23 /* NSTimer+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C45C85C2498BBC300F9AF23 /* NSTimer+Additions.m */; };
 		4CC340FA2498737700CA0CA9 /* JWDVideoPlayController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CC340F92498737700CA0CA9 /* JWDVideoPlayController.m */; };
 		4CC340FE2498938800CA0CA9 /* JWDOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CC340FD2498938800CA0CA9 /* JWDOverlayView.m */; };
 		4CC3410124989BDE00CA0CA9 /* AVAsset+JWDAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CC3410024989BDE00CA0CA9 /* AVAsset+JWDAdditions.m */; };
@@ -50,6 +51,8 @@
 		39509200061DB2A7150AD65E /* libPods-JWDVideoPlayerUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JWDVideoPlayerUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A18258CD59A9414E1E398B3 /* Pods-JWDVideoPlayerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JWDVideoPlayerUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-JWDVideoPlayerUITests/Pods-JWDVideoPlayerUITests.release.xcconfig"; sourceTree = "<group>"; };
 		4C45C8582498A6DF00F9AF23 /* Res */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Res; sourceTree = "<group>"; };
+		4C45C85B2498BBC300F9AF23 /* NSTimer+Additions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSTimer+Additions.h"; sourceTree = "<group>"; };
+		4C45C85C2498BBC300F9AF23 /* NSTimer+Additions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSTimer+Additions.m"; sourceTree = "<group>"; };
 		4CC340F82498737700CA0CA9 /* JWDVideoPlayController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JWDVideoPlayController.h; sourceTree = "<group>"; };
 		4CC340F92498737700CA0CA9 /* JWDVideoPlayController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JWDVideoPlayController.m; sourceTree = "<group>"; };
 		4CC340FB2498792F00CA0CA9 /* JWDTransport.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JWDTransport.h; sourceTree = "<group>"; };
@@ -211,6 +214,8 @@
 				4CC340FD2498938800CA0CA9 /* JWDOverlayView.m */,
 				4CC340FF24989BDE00CA0CA9 /* AVAsset+JWDAdditions.h */,
 				4CC3410024989BDE00CA0CA9 /* AVAsset+JWDAdditions.m */,
+				4C45C85B2498BBC300F9AF23 /* NSTimer+Additions.h */,
+				4C45C85C2498BBC300F9AF23 /* NSTimer+Additions.m */,
 			);
 			path = play;
 			sourceTree = "<group>";
@@ -412,6 +417,7 @@
 				4CC3410124989BDE00CA0CA9 /* AVAsset+JWDAdditions.m in Sources */,
 				4CC340FA2498737700CA0CA9 /* JWDVideoPlayController.m in Sources */,
 				CE2A05032193CE07003C15DD /* JWDVideoPlayViewController.m in Sources */,
+				4C45C85D2498BBC300F9AF23 /* NSTimer+Additions.m in Sources */,
 				4CC340FE2498938800CA0CA9 /* JWDOverlayView.m in Sources */,
 				CE2A04CD2193C98A003C15DD /* AppDelegate.m in Sources */,
 				CE2A05002193CAE3003C15DD /* JWDVideoHomeViewController.m in Sources */,

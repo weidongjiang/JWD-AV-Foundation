@@ -79,8 +79,8 @@ static const NSString *PlayerItemStatusContext;
                 
                 [self.player play];
                 
-//                [self loadMediaOptions];
-//                [self generateThumbnails];
+                [self loadMediaOptions];
+                [self generateThumbnails];
                 
             }else {
                 NSLog(@"Failed to load video");
@@ -107,6 +107,7 @@ static const NSString *PlayerItemStatusContext;
 }
 
 - (void)generateThumbnails {
+    
     
 }
 
