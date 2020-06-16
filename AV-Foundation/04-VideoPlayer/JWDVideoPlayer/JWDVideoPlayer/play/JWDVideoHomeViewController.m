@@ -10,7 +10,7 @@
 #import "JWDVideoPlayViewController.h"
 #import "JWDVideoPlayView.h"
 #import <Masonry.h>
-
+#import "JWDVideoPlayController.h"
 
 @interface JWDVideoHomeViewController ()
 
@@ -43,9 +43,15 @@
 
 - (void)playLocalButton {
 
+//    NSURL *localURL = [[NSBundle mainBundle] URLForResource:@"hubblecast" withExtension:@"m4v"];
+    NSString *localURL = [[NSBundle mainBundle] pathsForResourcesOfType:@"m4v" inDirectory:@"hubblecast"];
+    
+    JWDVideoPlayController *playController = [[JWDVideoPlayController alloc] initWithUrl:localURL];
+    
+    UIView *playView = playController.view;
 
-    [self.view addSubview:self.playView];
-    [self.playView mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.view addSubview:playView];
+    [playView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.view);
     }];
 
@@ -56,11 +62,11 @@
 }
 
 
-- (JWDVideoPlayView *)playView {
-    if (!_playView) {
-        _playView = [[JWDVideoPlayView alloc] init];
-    }
-    return _playView;
-}
+//- (JWDVideoPlayView *)playView {
+//    if (!_playView) {
+//        _playView = [[JWDVideoPlayView alloc] init];
+//    }
+//    return _playView;
+//}
 
 @end

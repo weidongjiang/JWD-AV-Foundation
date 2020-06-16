@@ -34,7 +34,7 @@
 		0742EBDB17E8E73900E30107 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0742EBDA17E8E73900E30107 /* AVFoundation.framework */; };
 		0742EBDD17E8E73F00E30107 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0742EBDC17E8E73F00E30107 /* CoreMedia.framework */; };
 		0742EBDF17E8E74700E30107 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0742EBDE17E8E74700E30107 /* MediaPlayer.framework */; };
-		C409EA6917E92F4200F8C2AC /* hubblecast.m4v in Resources */ = {isa = PBXBuildFile; fileRef = C409EA6817E92F4200F8C2AC /* hubblecast.m4v */; };
+		4CC341062498A14F00CA0CA9 /* hubblecast.m4v in Resources */ = {isa = PBXBuildFile; fileRef = 4CC341052498A14F00CA0CA9 /* hubblecast.m4v */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -85,7 +85,7 @@
 		0742EBDA17E8E73900E30107 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		0742EBDC17E8E73F00E30107 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		0742EBDE17E8E74700E30107 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
-		C409EA6817E92F4200F8C2AC /* hubblecast.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = hubblecast.m4v; sourceTree = "<group>"; };
+		4CC341052498A14F00CA0CA9 /* hubblecast.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = hubblecast.m4v; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,7 +185,7 @@
 		0742EBA917E8E69600E30107 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				C409EA6817E92F4200F8C2AC /* hubblecast.m4v */,
+				4CC341052498A14F00CA0CA9 /* hubblecast.m4v */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -287,6 +287,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -307,7 +308,7 @@
 			files = (
 				0712019617E8E5DD00994BC1 /* Images.xcassets in Resources */,
 				0712018817E8E5DD00994BC1 /* InfoPlist.strings in Resources */,
-				C409EA6917E92F4200F8C2AC /* hubblecast.m4v in Resources */,
+				4CC341062498A14F00CA0CA9 /* hubblecast.m4v in Resources */,
 				0742EBD217E8E69600E30107 /* THOverlayView.xib in Resources */,
 				0742EBCD17E8E69600E30107 /* THSubtitleView.xib in Resources */,
 				0712019117E8E5DD00994BC1 /* Main.storyboard in Resources */,

@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		2FD9E764177FC9A76122DFA2 /* libPods-JWDVideoPlayer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EFB332023E23393422AE3A46 /* libPods-JWDVideoPlayer.a */; };
+		4CC340FA2498737700CA0CA9 /* JWDVideoPlayController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CC340F92498737700CA0CA9 /* JWDVideoPlayController.m */; };
+		4CC340FE2498938800CA0CA9 /* JWDOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CC340FD2498938800CA0CA9 /* JWDOverlayView.m */; };
+		4CC3410124989BDE00CA0CA9 /* AVAsset+JWDAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CC3410024989BDE00CA0CA9 /* AVAsset+JWDAdditions.m */; };
 		C0CBFF76E0B49E009A69D14C /* libPods-JWDVideoPlayerTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 89C287CCA6F9C280C4A95E4B /* libPods-JWDVideoPlayerTests.a */; };
 		CE2A04CD2193C98A003C15DD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CE2A04CC2193C98A003C15DD /* AppDelegate.m */; };
 		CE2A04D02193C98A003C15DD /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE2A04CF2193C98A003C15DD /* ViewController.m */; };
@@ -45,6 +48,13 @@
 		223730AA01310111E329A8D4 /* Pods-JWDVideoPlayerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JWDVideoPlayerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JWDVideoPlayerTests/Pods-JWDVideoPlayerTests.debug.xcconfig"; sourceTree = "<group>"; };
 		39509200061DB2A7150AD65E /* libPods-JWDVideoPlayerUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JWDVideoPlayerUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A18258CD59A9414E1E398B3 /* Pods-JWDVideoPlayerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JWDVideoPlayerUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-JWDVideoPlayerUITests/Pods-JWDVideoPlayerUITests.release.xcconfig"; sourceTree = "<group>"; };
+		4CC340F82498737700CA0CA9 /* JWDVideoPlayController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JWDVideoPlayController.h; sourceTree = "<group>"; };
+		4CC340F92498737700CA0CA9 /* JWDVideoPlayController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JWDVideoPlayController.m; sourceTree = "<group>"; };
+		4CC340FB2498792F00CA0CA9 /* JWDTransport.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JWDTransport.h; sourceTree = "<group>"; };
+		4CC340FC2498938800CA0CA9 /* JWDOverlayView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JWDOverlayView.h; sourceTree = "<group>"; };
+		4CC340FD2498938800CA0CA9 /* JWDOverlayView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JWDOverlayView.m; sourceTree = "<group>"; };
+		4CC340FF24989BDE00CA0CA9 /* AVAsset+JWDAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AVAsset+JWDAdditions.h"; sourceTree = "<group>"; };
+		4CC3410024989BDE00CA0CA9 /* AVAsset+JWDAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "AVAsset+JWDAdditions.m"; sourceTree = "<group>"; };
 		6D58D6A31EA13720E8C367C7 /* Pods-JWDVideoPlayer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JWDVideoPlayer.release.xcconfig"; path = "Pods/Target Support Files/Pods-JWDVideoPlayer/Pods-JWDVideoPlayer.release.xcconfig"; sourceTree = "<group>"; };
 		89C287CCA6F9C280C4A95E4B /* libPods-JWDVideoPlayerTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JWDVideoPlayerTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D85514F196D61A174FF8213 /* Pods-JWDVideoPlayer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JWDVideoPlayer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JWDVideoPlayer/Pods-JWDVideoPlayer.debug.xcconfig"; sourceTree = "<group>"; };
@@ -191,6 +201,13 @@
 				CE2A05022193CE07003C15DD /* JWDVideoPlayViewController.m */,
 				CE2A05042193CF5C003C15DD /* JWDVideoPlayView.h */,
 				CE2A05052193CF5C003C15DD /* JWDVideoPlayView.m */,
+				4CC340F82498737700CA0CA9 /* JWDVideoPlayController.h */,
+				4CC340F92498737700CA0CA9 /* JWDVideoPlayController.m */,
+				4CC340FB2498792F00CA0CA9 /* JWDTransport.h */,
+				4CC340FC2498938800CA0CA9 /* JWDOverlayView.h */,
+				4CC340FD2498938800CA0CA9 /* JWDOverlayView.m */,
+				4CC340FF24989BDE00CA0CA9 /* AVAsset+JWDAdditions.h */,
+				4CC3410024989BDE00CA0CA9 /* AVAsset+JWDAdditions.m */,
 			);
 			path = play;
 			sourceTree = "<group>";
@@ -388,7 +405,10 @@
 				CE2A05062193CF5C003C15DD /* JWDVideoPlayView.m in Sources */,
 				CE2A04D02193C98A003C15DD /* ViewController.m in Sources */,
 				CE2A04DB2193C98D003C15DD /* main.m in Sources */,
+				4CC3410124989BDE00CA0CA9 /* AVAsset+JWDAdditions.m in Sources */,
+				4CC340FA2498737700CA0CA9 /* JWDVideoPlayController.m in Sources */,
 				CE2A05032193CE07003C15DD /* JWDVideoPlayViewController.m in Sources */,
+				4CC340FE2498938800CA0CA9 /* JWDOverlayView.m in Sources */,
 				CE2A04CD2193C98A003C15DD /* AppDelegate.m in Sources */,
 				CE2A05002193CAE3003C15DD /* JWDVideoHomeViewController.m in Sources */,
 			);

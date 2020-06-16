@@ -7,10 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <AVFoundation/AVFoundation.h>
+#import "JWDTransport.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface JWDVideoPlayView : UIView
+
+@property (nonatomic, readonly) id<JWDTransport> transport;
+
+- (instancetype)initWithPlayer:(AVPlayer *)player;
 
 @end
 
