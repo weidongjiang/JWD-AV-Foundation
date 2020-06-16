@@ -46,7 +46,10 @@
     NSString *localURL = [[NSBundle mainBundle] pathForResource:@"hubblecast" ofType:@"m4v" inDirectory:@"Res"];
     
     self.playController = [[JWDVideoPlayController alloc] initWithUrl:[NSURL fileURLWithPath:localURL]];
-
+    __weak typeof(self) weakSelf = self;
+    self.playController.removeBlock = ^{
+        weakSelf.playController = nil;
+    };
     [self.view addSubview:self.playController.view];
     [self.playController.view mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.view);

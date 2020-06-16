@@ -160,6 +160,11 @@ static const NSString *PlayerItemStatusContext;
 - (void)stop {
     [self.player setRate:0.0f];
     [self.transport playbackComplete];
+    [self.playerView removeFromSuperview];
+    self.playerView = nil;
+    if (self.removeBlock) {
+        self.removeBlock ();
+    }
 }
 
 - (void)scrubbingDidStart {

@@ -9,6 +9,12 @@
 #import "JWDOverlayView.h"
 #import <Masonry.h>
 
+@interface JWDOverlayView ()
+@property (nonatomic, strong) UILabel *playTitleLabel;
+
+@end
+
+
 @implementation JWDOverlayView
 - (instancetype)init {
     self = [super init];
@@ -23,25 +29,32 @@
 
     // 布局
 
-//    UIView *topView = [[UIView alloc] init];
-//    topView.backgroundColor = [UIColor blueColor];
-//    [self addSubview:topView];
-//
-//    [topView mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.top.left.right.equalTo(self);
-//        make.height.mas_equalTo(50);
-//    }];
-//
-//    UIButton *closeBtn = [[UIButton alloc] init];
-//    closeBtn.backgroundColor = [UIColor redColor];
-//    [closeBtn addTarget:self action:@selector(closeBtn) forControlEvents:UIControlEventTouchUpInside];
-//    [topView addSubview:closeBtn];
-//    [closeBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.top.right.bottom.equalTo(topView);
-//        make.width.mas_equalTo(50);
-//    }];
+    UIView *topView = [[UIView alloc] init];
+    topView.backgroundColor = [UIColor blueColor];
+    [self addSubview:topView];
+    [topView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.left.right.equalTo(self);
+        make.height.mas_equalTo(50);
+    }];
 
+    UIButton *closeBtn = [[UIButton alloc] init];
+    closeBtn.backgroundColor = [UIColor redColor];
+    [closeBtn setImage:[UIImage imageNamed:@"close"] forState:UIControlStateNormal];
+    [closeBtn addTarget:self action:@selector(closeBtn) forControlEvents:UIControlEventTouchUpInside];
+    [topView addSubview:closeBtn];
+    [closeBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.left.bottom.equalTo(topView);
+        make.width.mas_equalTo(50);
+    }];
 
+    UILabel *playTitleLabel = [[UILabel alloc] init];
+    playTitleLabel.textColor = [UIColor whiteColor];
+    self.playTitleLabel = playTitleLabel;
+    [topView addSubview:playTitleLabel];
+    [playTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(closeBtn.mas_right);
+        make.top.bottom.equalTo(topView);
+    }];
 
     UIView *bottomView = [[UIView alloc] init];
     bottomView.backgroundColor = [UIColor blueColor];
@@ -88,6 +101,10 @@
 - (void)closeBtn {
   
     
+    if (self.delegate && [self.delegate respondsToSelector:@selector(stop)]) {
+        [self.delegate stop];
+    }
+    
 }
 
 
@@ -95,12 +112,14 @@
 
 - (void)setTitle:(NSString *)title {
     NSLog(@"JWDOverlayView----title--%@",title);
+    self.playTitleLabel.text = title;
 }
 
 - (void)setCurrentTime:(NSTimeInterval)time duration:(NSTimeInterval)duration {
     NSLog(@"JWDOverlayView----time--%f",time);
 
 }
+
 - (void)setScrubbingTime:(NSTimeInterval)time {
     NSLog(@"JWDOverlayView----setScrubbingTime--%f",time);
 
