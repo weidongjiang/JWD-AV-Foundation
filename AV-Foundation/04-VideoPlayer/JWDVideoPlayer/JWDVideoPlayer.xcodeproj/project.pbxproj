@@ -23,7 +23,6 @@
 		CE2A04E52193C98D003C15DD /* JWDVideoPlayerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CE2A04E42193C98D003C15DD /* JWDVideoPlayerTests.m */; };
 		CE2A04F02193C98D003C15DD /* JWDVideoPlayerUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = CE2A04EF2193C98D003C15DD /* JWDVideoPlayerUITests.m */; };
 		CE2A05002193CAE3003C15DD /* JWDVideoHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE2A04FF2193CAE3003C15DD /* JWDVideoHomeViewController.m */; };
-		CE2A05032193CE07003C15DD /* JWDVideoPlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE2A05022193CE07003C15DD /* JWDVideoPlayViewController.m */; };
 		CE2A05062193CF5C003C15DD /* JWDVideoPlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE2A05052193CF5C003C15DD /* JWDVideoPlayView.m */; };
 		FAD195CEFBFDFB773FA41D4B /* libPods-JWDVideoPlayerUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 39509200061DB2A7150AD65E /* libPods-JWDVideoPlayerUITests.a */; };
 /* End PBXBuildFile section */
@@ -82,8 +81,6 @@
 		CE2A04F12193C98D003C15DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE2A04FE2193CAE3003C15DD /* JWDVideoHomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JWDVideoHomeViewController.h; sourceTree = "<group>"; };
 		CE2A04FF2193CAE3003C15DD /* JWDVideoHomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JWDVideoHomeViewController.m; sourceTree = "<group>"; };
-		CE2A05012193CE06003C15DD /* JWDVideoPlayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JWDVideoPlayViewController.h; sourceTree = "<group>"; };
-		CE2A05022193CE07003C15DD /* JWDVideoPlayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JWDVideoPlayViewController.m; sourceTree = "<group>"; };
 		CE2A05042193CF5C003C15DD /* JWDVideoPlayView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JWDVideoPlayView.h; sourceTree = "<group>"; };
 		CE2A05052193CF5C003C15DD /* JWDVideoPlayView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JWDVideoPlayView.m; sourceTree = "<group>"; };
 		EFB332023E23393422AE3A46 /* libPods-JWDVideoPlayer.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JWDVideoPlayer.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -203,8 +200,6 @@
 			children = (
 				CE2A04FE2193CAE3003C15DD /* JWDVideoHomeViewController.h */,
 				CE2A04FF2193CAE3003C15DD /* JWDVideoHomeViewController.m */,
-				CE2A05012193CE06003C15DD /* JWDVideoPlayViewController.h */,
-				CE2A05022193CE07003C15DD /* JWDVideoPlayViewController.m */,
 				CE2A05042193CF5C003C15DD /* JWDVideoPlayView.h */,
 				CE2A05052193CF5C003C15DD /* JWDVideoPlayView.m */,
 				4CC340F82498737700CA0CA9 /* JWDVideoPlayController.h */,
@@ -416,7 +411,6 @@
 				CE2A04DB2193C98D003C15DD /* main.m in Sources */,
 				4CC3410124989BDE00CA0CA9 /* AVAsset+JWDAdditions.m in Sources */,
 				4CC340FA2498737700CA0CA9 /* JWDVideoPlayController.m in Sources */,
-				CE2A05032193CE07003C15DD /* JWDVideoPlayViewController.m in Sources */,
 				4C45C85D2498BBC300F9AF23 /* NSTimer+Additions.m in Sources */,
 				4CC340FE2498938800CA0CA9 /* JWDOverlayView.m in Sources */,
 				CE2A04CD2193C98A003C15DD /* AppDelegate.m in Sources */,
