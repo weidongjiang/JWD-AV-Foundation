@@ -132,8 +132,7 @@ static const NSString *PlayerItemStatusContext;
 
 - (void)addItemEndObserverForPlayerItem {
     
-    
-        __weak JWDVideoPlayController *weakSelf = self;
+    __weak JWDVideoPlayController *weakSelf = self;
     void (^callBack)(NSNotification * _Nonnull note) = ^(NSNotification * _Nonnull notification) {
         [weakSelf.player seekToTime:kCMTimeZero completionHandler:^(BOOL finished) {
             [weakSelf.transport playbackComplete];
@@ -162,9 +161,6 @@ static const NSString *PlayerItemStatusContext;
     [self.transport playbackComplete];
     [self.playerView removeFromSuperview];
     self.playerView = nil;
-    if (self.removeBlock) {
-        self.removeBlock ();
-    }
 }
 
 - (void)scrubbingDidStart {

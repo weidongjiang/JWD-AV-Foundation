@@ -16,6 +16,7 @@
 
 @property (nonatomic, strong) JWDVideoPlayView        *playView; ///< <#value#>
 @property (nonatomic, strong) JWDVideoPlayController *playController;
+
 @end
 
 @implementation JWDVideoHomeViewController
@@ -33,7 +34,6 @@
     [playLocalButton addTarget:self action:@selector(playLocalButton) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:playLocalButton];
 
-
     UIButton *playRemoteButton = [[UIButton alloc] initWithFrame:CGRectMake(30, 200, 160, 30)];
     playRemoteButton.backgroundColor = [UIColor redColor];
     [playRemoteButton setTitle:@"playRemote" forState:UIControlStateNormal];
@@ -44,12 +44,8 @@
 - (void)playLocalButton {
 
     NSString *localURL = [[NSBundle mainBundle] pathForResource:@"hubblecast" ofType:@"m4v" inDirectory:@"Res"];
-    
     self.playController = [[JWDVideoPlayController alloc] initWithUrl:[NSURL fileURLWithPath:localURL]];
-    __weak typeof(self) weakSelf = self;
-    self.playController.removeBlock = ^{
-        weakSelf.playController = nil;
-    };
+    
     [self.view addSubview:self.playController.view];
     [self.playController.view mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.view);
@@ -61,12 +57,5 @@
     
 }
 
-
-//- (JWDVideoPlayView *)playView {
-//    if (!_playView) {
-//        _playView = [[JWDVideoPlayView alloc] init];
-//    }
-//    return _playView;
-//}
 
 @end

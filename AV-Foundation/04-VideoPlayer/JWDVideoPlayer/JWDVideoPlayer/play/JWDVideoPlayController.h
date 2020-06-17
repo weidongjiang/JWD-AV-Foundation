@@ -17,7 +17,7 @@ typedef void(^JWDVideoPlayControllerRemoveBlock)(void);
 @interface JWDVideoPlayController : NSObject
 
 @property (nonatomic,strong,readonly) UIView *view;
-@property (nonatomic, copy) JWDVideoPlayControllerRemoveBlock removeBlock;
+
 - (instancetype)initWithUrl:(NSURL *)assetURL;
 
 @end

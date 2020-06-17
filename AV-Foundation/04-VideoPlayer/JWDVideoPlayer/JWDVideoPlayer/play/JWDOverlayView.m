@@ -8,6 +8,7 @@
 
 #import "JWDOverlayView.h"
 #import <Masonry.h>
+#import "NSTimer+Additions.h"
 
 @interface JWDOverlayView ()
 
@@ -18,6 +19,8 @@
 @property (nonatomic, strong) UIView *bottomView;
 @property (nonatomic, assign) BOOL animateHidden;
 @property (nonatomic, strong) UIButton *playBtn;
+@property (nonatomic, strong) NSTimer *timer;
+
 @end
 
 
@@ -27,6 +30,7 @@
     if (self) {
         [self setupView];
         [self addGestureRecognize];
+        [self resetTimer];
     }
     return self;
 }
@@ -39,7 +43,7 @@
     UITapGestureRecognizer *towtap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(overlayViewTowTap:)];
     towtap.numberOfTapsRequired = 2;
     [self addGestureRecognizer:towtap];
-    
+
 }
 
 - (void)overlayViewTap:(UITapGestureRecognizer *)tap {
@@ -56,7 +60,6 @@
 - (void)setupView {
 
     // 布局
-
     UIView *topView = [[UIView alloc] init];
     self.topView = topView;
     topView.backgroundColor = [UIColor grayColor];
@@ -143,6 +146,7 @@
     if (self.delegate && [self.delegate respondsToSelector:@selector(stop)]) {
         [self.delegate stop];
     }
+    [self deallocTimer];
 }
 
 - (void)sliderTouchDown:(UISlider *)slider {
@@ -190,7 +194,6 @@
 
 - (void)animateWith:(BOOL)isHidden {
     
-    
     [UIView animateWithDuration:0.35 animations:^{
         if (isHidden) {
             self.animateHidden = NO;
@@ -200,6 +203,7 @@
             [self.bottomView mas_updateConstraints:^(MASConstraintMaker *make) {
                 make.bottom.equalTo(self.topView.superview).offset(50);
             }];
+            [self deallocTimer];
         }else {
             self.animateHidden = YES;
             [self.topView mas_updateConstraints:^(MASConstraintMaker *make) {
@@ -208,6 +212,7 @@
             [self.bottomView mas_updateConstraints:^(MASConstraintMaker *make) {
                 make.bottom.equalTo(self.topView.superview).offset(0);
             }];
+            [self resetTimer];
         }
         
         [self layoutIfNeeded];
@@ -216,6 +221,20 @@
         
     }];
     
+}
+
+- (void)deallocTimer {
+    [self.timer invalidate];
+    self.timer = nil;
+}
+
+- (void)resetTimer {
+    [self deallocTimer];
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:5.0 firing:^{
+        if (self.timer.isValid && self.animateHidden) {
+            [self animateWith:YES];
+        }
+    }];
 }
 
 @end
