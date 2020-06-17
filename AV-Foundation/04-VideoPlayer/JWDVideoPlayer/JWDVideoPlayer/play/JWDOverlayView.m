@@ -20,6 +20,7 @@
 @property (nonatomic, assign) BOOL animateHidden;
 @property (nonatomic, strong) UIButton *playBtn;
 @property (nonatomic, strong) NSTimer *timer;
+@property (nonatomic, assign) BOOL isPlaying;
 
 @end
 
@@ -34,28 +35,6 @@
     }
     return self;
 }
-
-- (void)addGestureRecognize {
-    self.animateHidden = YES;
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(overlayViewTap:)];
-    [self addGestureRecognizer:tap];
-    
-    UITapGestureRecognizer *towtap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(overlayViewTowTap:)];
-    towtap.numberOfTapsRequired = 2;
-    [self addGestureRecognizer:towtap];
-
-}
-
-- (void)overlayViewTap:(UITapGestureRecognizer *)tap {
-    NSLog(@"JWDOverlayView----overlayViewTap");
-    [self animateWith:self.animateHidden];
-}
-
-- (void)overlayViewTowTap:(UITapGestureRecognizer *)tap {
-    NSLog(@"JWDOverlayView----overlayViewTowTap");
-
-}
-
 
 - (void)setupView {
 
@@ -95,8 +74,7 @@
         make.bottom.left.right.equalTo(self);
         make.height.mas_equalTo(50);
     }];
-
-    
+ 
     UIButton *playBtn = [[UIButton alloc] init];
     self.playBtn = playBtn;
     [playBtn setTitle:@"pause" forState:UIControlStateNormal];
@@ -127,18 +105,24 @@
 }
 
 - (void)playBtnDid:(UIButton *)button {
-    if (button.isSelected) {
-        [button setTitle:@"pause" forState:UIControlStateNormal];
-        [button setSelected:NO];
+    [self setPlay:button.isSelected];
+}
+
+- (void)setPlay:(BOOL)isPlaying {
+    if (isPlaying) {
+        [self.playBtn setTitle:@"pause" forState:UIControlStateNormal];
+        [self.playBtn setSelected:NO];
         if (self.delegate && [self.delegate respondsToSelector:@selector(play)]) {
             [self.delegate play];
         }
+        self.isPlaying = YES;
     }else {
-        [button setTitle:@"play" forState:UIControlStateNormal];
-        [button setSelected:YES];
+        [self.playBtn setTitle:@"play" forState:UIControlStateNormal];
+        [self.playBtn setSelected:YES];
         if (self.delegate && [self.delegate respondsToSelector:@selector(pause)]) {
             [self.delegate pause];
         }
+        self.isPlaying = NO;
     }
 }
 
@@ -153,6 +137,7 @@
     if (self.delegate && [self.delegate respondsToSelector:@selector(pause)]) {
         [self.delegate pause];
     }
+    self.isPlaying = NO;
 }
 
 - (void)sliderTouchUpInSide:(UISlider *)slider {
@@ -162,10 +147,10 @@
     if (self.delegate && [self.delegate respondsToSelector:@selector(play)]) {
         [self.delegate play];
     }
+    self.isPlaying = YES;
 }
 
 - (void)setTitle:(NSString *)title {
-    NSLog(@"JWDOverlayView----title--%@",title);
     self.playTitleLabel.text = title;
 }
 
@@ -174,26 +159,35 @@
     CGFloat sliderValue = time/duration;
     [self.slider setValue:sliderValue];
 }
+- (void)playbackComplete {
+    [self.playBtn setTitle:@"play" forState:UIControlStateNormal];
+    [self.playBtn setSelected:YES];
+    self.isPlaying = NO;
+}
 
 - (void)setScrubbingTime:(NSTimeInterval)time {
     NSLog(@"JWDOverlayView----setScrubbingTime--%f",time);
 
 }
 
-- (void)playbackComplete {
-    
-    [self.playBtn setTitle:@"play" forState:UIControlStateNormal];
-    [self.playBtn setSelected:YES];
-    
-}
-
 - (void)setSubtitles:(NSArray *)subtitles {
     
 }
 
-
+#pragma Timer
+- (void)resetTimer {
+    [self deallocTimer];
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:5.0 firing:^{
+        if (self.timer.isValid && self.animateHidden) {
+            [self animateWith:YES];
+        }
+    }];
+}
+- (void)deallocTimer {
+    [self.timer invalidate];
+    self.timer = nil;
+}
 - (void)animateWith:(BOOL)isHidden {
-    
     [UIView animateWithDuration:0.35 animations:^{
         if (isHidden) {
             self.animateHidden = NO;
@@ -218,23 +212,29 @@
         [self layoutIfNeeded];
         
     } completion:^(BOOL finished) {
-        
     }];
+}
+
+#pragma addGestureRecognize
+- (void)addGestureRecognize {
     
+    self.animateHidden = YES;
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(overlayViewTap:)];
+    tap.numberOfTapsRequired = 1;
+    [self addGestureRecognizer:tap];
+    
+    UITapGestureRecognizer *doubletap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(overlayViewDoubletap:)];
+    doubletap.numberOfTapsRequired = 2;
+    [self addGestureRecognizer:doubletap];
+    [tap requireGestureRecognizerToFail:doubletap];
 }
 
-- (void)deallocTimer {
-    [self.timer invalidate];
-    self.timer = nil;
+- (void)overlayViewTap:(UITapGestureRecognizer *)tap {
+    [self animateWith:self.animateHidden];
 }
 
-- (void)resetTimer {
-    [self deallocTimer];
-    self.timer = [NSTimer scheduledTimerWithTimeInterval:5.0 firing:^{
-        if (self.timer.isValid && self.animateHidden) {
-            [self animateWith:YES];
-        }
-    }];
+- (void)overlayViewDoubletap:(UITapGestureRecognizer *)tap {
+    [self setPlay:self.playBtn.isSelected];
 }
 
 @end
