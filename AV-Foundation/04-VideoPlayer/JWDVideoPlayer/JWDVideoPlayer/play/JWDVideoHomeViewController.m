@@ -7,7 +7,7 @@
 //
 
 #import "JWDVideoHomeViewController.h"
-#import "JWDVideoPlayViewController.h"
+
 #import "JWDVideoPlayView.h"
 #import <Masonry.h>
 #import "JWDVideoPlayController.h"
