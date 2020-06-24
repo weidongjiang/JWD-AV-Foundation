@@ -21,6 +21,8 @@
 @property (nonatomic, strong) UIButton *playBtn;
 @property (nonatomic, strong) NSTimer *timer;
 @property (nonatomic, assign) BOOL isPlaying;
+@property (nonatomic, strong) UILabel *totalTimeLabel;
+@property (nonatomic, strong) UILabel *currentTimeLabel;
 
 @end
 
@@ -77,7 +79,9 @@
  
     UIButton *playBtn = [[UIButton alloc] init];
     self.playBtn = playBtn;
-    [playBtn setTitle:@"pause" forState:UIControlStateNormal];
+    [playBtn setTitle:@"暂停" forState:UIControlStateNormal];
+    playBtn.titleLabel.font = [UIFont systemFontOfSize:12];
+    [playBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [playBtn addTarget:self action:@selector(playBtnDid:) forControlEvents:UIControlEventTouchUpInside];
     [bottomView addSubview:playBtn];
     [playBtn mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -85,15 +89,40 @@
         make.width.mas_equalTo(50);
     }];
     
+    
+    self.currentTimeLabel = [[UILabel alloc] init];
+    self.currentTimeLabel.textColor = [UIColor blackColor];
+    self.currentTimeLabel.font = [UIFont systemFontOfSize:12];
+    [bottomView addSubview:self.currentTimeLabel];
+    [self.currentTimeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(bottomView);
+        make.left.equalTo(self.playBtn.mas_right).offset(10);
+        make.width.mas_equalTo(35);
+    }];
+    
+    
+    self.totalTimeLabel = [[UILabel alloc] init];
+    self.totalTimeLabel.textColor = [UIColor blackColor];
+    self.totalTimeLabel.font = [UIFont systemFontOfSize:12];
+    [bottomView addSubview:self.totalTimeLabel];
+    [self.totalTimeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(bottomView);
+        make.right.equalTo(bottomView.mas_right).offset(-10);
+        make.width.mas_equalTo(35);
+    }];
+    
     UISlider *slider = [[UISlider alloc] init];
+    slider.minimumTrackTintColor = [UIColor orangeColor];
+    slider.maximumTrackTintColor = [UIColor blueColor];
+    slider.thumbTintColor = [UIColor orangeColor];
+    
     [slider addTarget:self action:@selector(sliderTouchDown:) forControlEvents:UIControlEventTouchDown];
     [slider addTarget:self action:@selector(sliderTouchUpInSide:) forControlEvents:UIControlEventTouchUpInside];
-
     self.slider = slider;
     [bottomView addSubview:slider];
     [slider mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(playBtn.mas_right).offset(15);
-        make.right.equalTo(bottomView);
+        make.left.equalTo(self.currentTimeLabel.mas_right).offset(10);
+        make.right.equalTo(self.totalTimeLabel.mas_left).offset(-10);
         make.top.bottom.equalTo(bottomView);
     }];
 
@@ -110,14 +139,14 @@
 
 - (void)setPlay:(BOOL)isPlaying {
     if (isPlaying) {
-        [self.playBtn setTitle:@"pause" forState:UIControlStateNormal];
+        [self.playBtn setTitle:@"暂停" forState:UIControlStateNormal];
         [self.playBtn setSelected:NO];
         if (self.delegate && [self.delegate respondsToSelector:@selector(play)]) {
             [self.delegate play];
         }
         self.isPlaying = YES;
     }else {
-        [self.playBtn setTitle:@"play" forState:UIControlStateNormal];
+        [self.playBtn setTitle:@"播放" forState:UIControlStateNormal];
         [self.playBtn setSelected:YES];
         if (self.delegate && [self.delegate respondsToSelector:@selector(pause)]) {
             [self.delegate pause];
@@ -158,6 +187,20 @@
     self.duration = duration;
     CGFloat sliderValue = time/duration;
     [self.slider setValue:sliderValue];
+    
+    NSString *currentTime = [self getStringTimeWithTimeInterval:time];
+    NSString *totalTime = [self getStringTimeWithTimeInterval:duration];
+
+    self.currentTimeLabel.text = currentTime;
+    self.totalTimeLabel.text = totalTime;
+}
+
+- (NSString *)getStringTimeWithTimeInterval:(NSTimeInterval)nterval {
+    NSDate *confromTimesp = [NSDate dateWithTimeIntervalSince1970:nterval];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"mm:ss"];
+    NSString *confromTimespStr = [dateFormatter stringFromDate:confromTimesp];
+    return confromTimespStr;
 }
 - (void)playbackComplete {
     [self.playBtn setTitle:@"play" forState:UIControlStateNormal];
