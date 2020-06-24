@@ -113,9 +113,9 @@
     
     UISlider *slider = [[UISlider alloc] init];
     slider.minimumTrackTintColor = [UIColor orangeColor];
-    slider.maximumTrackTintColor = [UIColor blueColor];
-    slider.thumbTintColor = [UIColor orangeColor];
-    
+    slider.maximumTrackTintColor = [[UIColor alloc] initWithWhite:1 alpha:0.3];
+    [slider setThumbImage:[UIImage imageNamed:@"icon_player_slider"] forState:UIControlStateNormal];
+    [slider setThumbImage:[UIImage imageNamed:@"icon_player_slider"] forState:UIControlStateHighlighted];
     [slider addTarget:self action:@selector(sliderTouchDown:) forControlEvents:UIControlEventTouchDown];
     [slider addTarget:self action:@selector(sliderTouchUpInSide:) forControlEvents:UIControlEventTouchUpInside];
     self.slider = slider;
@@ -193,6 +193,7 @@
 
     self.currentTimeLabel.text = currentTime;
     self.totalTimeLabel.text = totalTime;
+    
 }
 
 - (NSString *)getStringTimeWithTimeInterval:(NSTimeInterval)nterval {
